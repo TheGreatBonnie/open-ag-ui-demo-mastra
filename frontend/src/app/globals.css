@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --card: #1a1a1a;
+  --card-foreground: #ededed;
+  --popover: #1a1a1a;
+  --popover-foreground: #ededed;
+  --primary: #3b82f6;
+  --primary-foreground: #ffffff;
+  --secondary: #1e293b;
+  --secondary-foreground: #f1f5f9;
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
+  --accent: #c084fc;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #334155;
+  --input: #334155;
+  --ring: #3b82f6;
+  --radius: 0.5rem;
+}
+
+.light {
+  --background: #ffffff;
+  --foreground: #171717;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #2563eb;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f8fafc;
+  --muted-foreground: #64748b;
+  --accent: #c084fc;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #2563eb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* Light mode specific styles */
+.light .bg-white {
+  background-color: var(--card);
+}
+
+.light .border-gray-200 {
+  border-color: var(--border);
+}
+
+.light .text-gray-600 {
+  color: var(--muted-foreground);
+}
+
+.light .text-gray-700 {
+  color: var(--foreground);
+}
+
+.light .text-gray-800 {
+  color: var(--foreground);
+}
+
+.light .text-gray-900 {
+  color: var(--foreground);
+}
+
+.light .bg-gray-50 {
+  background-color: var(--muted);
+}
+
+.light .bg-gray-100 {
+  background-color: var(--secondary);
+}
+
+.light .hover\:bg-gray-50:hover {
+  background-color: var(--muted);
+}
+
+.light .hover\:bg-gray-100:hover {
+  background-color: var(--secondary);
+}
+
+.light .border-gray-300 {
+  border-color: var(--border);
+}
+
+.light .bg-green-50 {
+  background-color: rgba(34, 197, 94, 0.1);
+}
+
+.light .bg-red-50 {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.light .text-green-700 {
+  color: #22c55e;
+}
+
+.light .text-red-700 {
+  color: #ef4444;
+}
+
+.light .border-green-200 {
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.light .border-red-200 {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.light .hover\:bg-green-100:hover {
+  background-color: rgba(34, 197, 94, 0.2);
+}
+
+.light .hover\:bg-red-100:hover {
+  background-color: rgba(239, 68, 68, 0.2);
+}
+
+/* Dark mode specific styles (default) */
+.bg-white {
+  background-color: var(--card);
+}
+
+.border-gray-200 {
+  border-color: var(--border);
+}
+
+.text-gray-600 {
+  color: var(--muted-foreground);
+}
+
+.text-gray-700 {
+  color: var(--foreground);
+}
+
+.text-gray-800 {
+  color: var(--foreground);
+}
+
+.text-gray-900 {
+  color: var(--foreground);
+}
+
+.bg-gray-50 {
+  background-color: var(--muted);
+}
+
+.bg-gray-100 {
+  background-color: var(--secondary);
+}
+
+.hover\:bg-gray-50:hover {
+  background-color: var(--muted);
+}
+
+.hover\:bg-gray-100:hover {
+  background-color: var(--secondary);
+}
+
+.border-gray-300 {
+  border-color: var(--border);
+}
+
+.bg-green-50 {
+  background-color: rgba(34, 197, 94, 0.1);
+}
+
+.bg-red-50 {
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.text-green-700 {
+  color: #22c55e;
+}
+
+.text-red-700 {
+  color: #ef4444;
+}
+
+.border-green-200 {
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.border-red-200 {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.hover\:bg-green-100:hover {
+  background-color: rgba(34, 197, 94, 0.2);
+}
+
+.hover\:bg-red-100:hover {
+  background-color: rgba(239, 68, 68, 0.2);
+}
+
+.copilotKitInput{
+  background-color : (#233736) !important;
+}
