@@ -1,5 +1,5 @@
 // Import necessary dependencies for the stock analysis agent
-import { openai } from "@ai-sdk/openai"; // OpenAI SDK for language model integration
+import { google } from "@ai-sdk/google"; // OpenAI SDK for language model integration
 import { Agent } from "@mastra/core/agent"; // Core agent class from Mastra framework
 import { STOCK_ANALYST_PROMPT } from "../prompts"; // Pre-defined system prompt for stock analysis behavior
 import { stockAnalysisWorkflow } from "../workflows/stock-analysis-workflow"; // The complete stock analysis workflow
@@ -22,7 +22,7 @@ export const stockAnalysisAgent = new Agent({
   name: "stockAnalysisAgent", // Unique identifier for this agent instance
 
   // Step 2: Configure the underlying language model
-  model: openai("gpt-4o-mini"), // Use OpenAI's GPT-4o-mini model for intelligent conversation
+  model: google("gemini-2.5-flash"), // Use OpenAI's GPT-4o-mini model for intelligent conversation
 
   // Step 3: Set the agent's behavioral instructions
   instructions: STOCK_ANALYST_PROMPT, // System prompt that defines how the agent should behave and respond

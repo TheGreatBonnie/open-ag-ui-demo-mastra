@@ -50,6 +50,7 @@ app.use(express.json());
 // This endpoint handles streaming communication with AG-UI agents
 app.post("/mastra-agent", async (req: Request, res: Response) => {
   try {
+    debugger;
     // STEP 1: Parse and Validate Input
     // Parse the incoming request body using the RunAgentInputSchema to ensure
     // it contains all required fields (threadId, runId, messages, etc.)
