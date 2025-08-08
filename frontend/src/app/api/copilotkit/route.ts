@@ -4,7 +4,7 @@ import { HttpAgent } from "@ag-ui/client";
 // Import CopilotKit runtime components for setting up the API endpoint
 import {
   CopilotRuntime,
-  OpenAIAdapter,
+  GoogleGenerativeAIAdapter,
   copilotRuntimeNextJSAppRouterEndpoint,
 } from "@copilotkit/runtime";
 
@@ -19,7 +19,7 @@ const mastraAgent = new HttpAgent({
 // Initialize the CopilotKit runtime with our research agent
 const runtime = new CopilotRuntime({
   agents: {
-    mastraAgent : mastraAgent, // Register the research agent with the runtime
+    mastraAgent: mastraAgent, // Register the research agent with the runtime
   },
 });
 
@@ -31,10 +31,10 @@ export const POST = async (req: NextRequest) => {
   // Configure the CopilotKit endpoint for the Next.js app router
   const { handleRequest } = copilotRuntimeNextJSAppRouterEndpoint({
     runtime, // Use the runtime with our research agent
-    serviceAdapter: new OpenAIAdapter(), // Use the experimental adapter
+    serviceAdapter: new GoogleGenerativeAIAdapter(), // Use the experimental adapter
     endpoint: "/api/copilotkit", // Define the API endpoint path
   });
 
   // Process the incoming request with the CopilotKit handler
-  return handleRequest(req);
+  return await handleRequest(req);
 };

@@ -135,10 +135,13 @@ const fetchInformationFromUserQuery = createStep({
       });
 
       // Step 1.5: Call OpenAI to extract investment parameters from user query
-      const model = new OpenAI();
+      const model = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY,
+        baseURL: process.env.OLLAMA_API_URL
+      });
       console.log(data.messages[0].content, "PROMPT");
       const response = await model.chat.completions.create({
-        model: "gpt-4.1-mini",
+        model: process.env.OLLAMA_MODEL || '',
         messages: data.messages,
         tools: [userQueryExtractionTool as any], // Use extraction tool to parse parameters
         tool_choice:
@@ -189,7 +192,7 @@ const fetchInformationFromUserQuery = createStep({
         // Step 1.8: Validate and adjust investment date (prevent dates too far in the past)
         if (
           new Date().getFullYear() -
-            new Date(toolResult.investmentDate).getFullYear() >
+          new Date(toolResult.investmentDate).getFullYear() >
           4
         ) {
           toolResult.investmentDate = new Date(
@@ -661,8 +664,8 @@ const calculateInvestmentReturns = createStep({
         const benchmarkShares =
           benchmarkPriceAtInvestment?.close > 0
             ? Math.floor(
-                actualTotalInvestment / benchmarkPriceAtInvestment.close
-              )
+              actualTotalInvestment / benchmarkPriceAtInvestment.close
+            )
             : 0;
 
         // Step 3.6: Create unified date index for time series analysis
@@ -760,8 +763,8 @@ const calculateInvestmentReturns = createStep({
           const percentOfAllocation =
             actualTotalInvestment > 0
               ? ((shares * (stock.data[0]?.close || 0)) /
-                  actualTotalInvestment) *
-                100
+                actualTotalInvestment) *
+              100
               : 0;
           // Calculate return percentage for this specific ticker
           const returnPercent =
